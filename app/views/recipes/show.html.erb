@@ -1,0 +1,17 @@
+<h1>レシピ詳細</h1>
+
+<%= attachment_image_tag @recipe, :image %><br>
+
+<%= @recipe.title %></p>
+
+<%= simple_format @recipe.body %>
+
+<% if @recipe.user.id == current_user.id %>
+  <%= link_to "編集", edit_recipe_path(@recipe) %>
+<% end %>
+
+<%= @recipe.user.username %>
+
+<%= link_to user_path(@recipe.user) do %>
+  <%= @recipe.user.username %>さんのページへ
+<% end %>
