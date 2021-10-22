@@ -1,2 +1,13 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1 class="font-italic text-center">Welcome Recipe Site</h1>
+  <div class="main-image">
+    <i class="home">
+      <% if user_signed_in? %>
+        <a><%= link_to "マイページ", user_path(current_user), class:"btn btn-secondary btn-lg font-weight-bold" %></a>
+        <a><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-secondary btn-lg font-weight-bold" %></a>
+      <% else %>
+        <a><%= link_to "ログイン", new_user_session_path, class:"btn btn-secondary btn-lg font-weight-bold" %></a>
+        <a><%= link_to "新規登録", new_user_registration_path, class:"btn btn-secondary btn-lg font-weight-bold" %></a>
+      <% end %>
+    </i>
+  </div>
+

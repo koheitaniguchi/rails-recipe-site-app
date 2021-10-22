@@ -1,15 +1,51 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container">
+  <h1>マイページ</h1>
+</div>
+<div class="row">
+  <div class="col-12 col-md-6 col-lg-4">
+    <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", class:"card-img-top img-fluid", alt:"Responsive image" %>   
+      <div>
+        <p>ユーザー名前  ： <%= @user.username %></p> 
+      </div>           
+      <% if @user.id == current_user.id %>        
+        <p>メールアドレス：<%= @user.email %>          
+        <%= link_to "編集", edit_user_path(@user), class: "btn btn-secondary" %>          
+        <%= link_to "削除", user_path(@user), method: :delete, class: "btn btn-secondary", data: {confirm: "削除しますか？"} %></p>        
+      <% end %>    
+    <div>
+      <p>プロフィール       ： <%= @user.profile %></p>
+    </div>  
+  </div>
+</div>
+  
+  
 
-<h2>マイページ</h2>
 
-<%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", class: "profile_image is-rounded" %>
 
-<%= @user.username %>
 
-<% if @user.id == current_user.id %>
-<%= @user.email %>
-<%= link_to "編集", edit_user_path(@user) %>
-<% end %>
+<div class="row">
+  <% @user.recipes.each do |recipe| %> 
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card">
+        <%= link_to recipe_path(recipe) do %>
+          <%= attachment_image_tag recipe, :image, class:"card-img-top img-fluid", alt:"..." %>
+        <% end %>  
+      </div>
+        <div class="card-body">
+          <%= link_to "レシピの詳細", recipe_path(recipe) %> 
+            <% if @user.id == current_user.id %>
+              <%= link_to "レシピの編集", edit_recipe_path(recipe) %>        
+              <%= link_to "レシピの削除", recipe_path(recipe), method: :delete, data: {confirm: "削除しますか？"} %>         
+            <% end %> 
+        </div>
+    </div>
+  <% end %>  
+</div>
+   
+  
 
-<%= @user.profile %>
+
+
+      
+          
+  
