@@ -1,7 +1,7 @@
 <div class="container">
   <h1>マイページ</h1>
-</div>
-<div class="row">
+
+<div class="container">
   <div class="col-12 col-md-6 col-lg-4">
     <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", class:"card-img-top img-fluid", alt:"Responsive image" %>   
       <div>
@@ -17,12 +17,6 @@
     </div>  
   </div>
 </div>
-  
-  
-
-
-
-
 <div class="row">
   <% @user.recipes.each do |recipe| %> 
     <div class="col-12 col-md-6 col-lg-4">
@@ -32,17 +26,16 @@
         <% end %>  
       </div>
         <div class="card-body">
-          <%= link_to "レシピの詳細", recipe_path(recipe) %> 
+          <%= link_to "レシピの詳細", recipe_path(recipe), class: "text-success" %> 
             <% if @user.id == current_user.id %>
-              <%= link_to "レシピの編集", edit_recipe_path(recipe) %>        
-              <%= link_to "レシピの削除", recipe_path(recipe), method: :delete, data: {confirm: "削除しますか？"} %>         
+              <%= link_to "レシピの編集", edit_recipe_path(recipe), class: "text-success" %>        
+              <%= link_to "レシピの削除", recipe_path(recipe), class: "text-success", method: :delete, data: {confirm: "削除しますか？"} %>         
             <% end %> 
         </div>
     </div>
   <% end %>  
 </div>
-   
-  
+
 
 
 

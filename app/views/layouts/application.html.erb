@@ -12,7 +12,7 @@
   </head>
 
   <body> 
-    <div class="container">
+    <div class="container-fluid">
       <% if flash[:notice] %>
         <div class="notification is-info">
           <p class="notice"><%= notice %></p>
@@ -33,7 +33,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+          <div class="collapse navbar-collapse" id="navbarNav">
             <% if user_signed_in? %>
               <div class="navbar-nav ">
                   <a><%= link_to "レシピの一覧", recipes_path, class:"nav-link text-light h5" %></a>

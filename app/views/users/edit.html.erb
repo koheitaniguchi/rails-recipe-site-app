@@ -1,5 +1,5 @@
-<% provide(:title, "User edit") %>
-<h1 class="title">ユーザー編集</h1>
+<% provide(:title, "User edit") %><br>
+<h1 class="text-center">ユーザー編集</h1>
  
 
 <% if @user.errors.any? %>
@@ -13,7 +13,7 @@
   </div>
 <% end %>
 
-<div class="row">
+<div class="row justify-content-center">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @user do |f| %>
 
@@ -27,7 +27,7 @@
       <%= f.text_field :profile, class: 'form-control' %><br>
 
       <%= f.label :profile_image, "プロフィール画像", class: "label" %>
-      <%= f.attachment_field :profile_image, class: 'form-control' %><br>
+      <%= f.attachment_field :profile_image, class: 'form-control col-8' %><br>
 
       <%= f.submit "更新", class: "btn btn-success" %>
     <% end %>

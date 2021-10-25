@@ -1,5 +1,5 @@
-<% provide(:title, "Recipe edit") %>
-<h1>レシピ編集</h1>
+<% provide(:title, "Recipe edit") %><br>
+<h1 class="text-center">レシピ編集</h1>
 
 
 <% if @recipe.errors.any? %>
@@ -13,17 +13,17 @@
   </div>
 <% end %>
 
-<div class="row">
+<div class="form-row justify-content-center">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @recipe do |f| %>
       <%= f.label :title, "レシピ名", class: "label" %>
-      <%= f.text_field :title, class: "input form-control" %>
+      <%= f.text_field :title, class: "form-control" %>
           
       <%= f.label :body, "作り方", class: "label" %>
-      <%= f.text_area :body, class: "textarea form-control" %>
+      <%= f.text_area :body, class: "form-control" %>
         
       <%= f.label :image, "写真", class: "label" %>
-      <%= f.attachment_field :image, class: "input form-control" %><br>
+      <%= f.attachment_field :image, class: "form-control col-8" %><br>
 
       <%= f.submit '投稿', class: "btn btn-success" %>
     <% end %>

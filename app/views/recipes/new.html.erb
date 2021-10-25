@@ -1,5 +1,5 @@
-<% provide(:title, "Recipe new") %>
-<h2>新規レシピ作成</h2>
+<% provide(:title, "Recipe new") %><br>
+<h2 class="text-center">新規レシピ作成</h2>
 
 <% if @recipe.errors.any? %>
   <div class="notification is-danger">
@@ -12,17 +12,17 @@
   </div>
 <% end %>
       
-<div class="row">
+<div class="row justify-content-center">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @recipe do |f| %>
-      <%= f.label :title, "レシピ名", class: "label" %>
+      <%= f.label :title, "レシピ名", class: "label font-weight-bold" %>
       <%= f.text_field :title, class: 'form-control' %><br>
           
-      <%= f.label :body, "作り方", class: "label" %>
+      <%= f.label :body, "作り方", class: "label font-weight-bold" %>
       <%= f.text_area :body, class: 'form-control' %><br>
           
-      <%= f.label :image, "写真", class: "label" %>
-      <%= f.attachment_field :image, class: 'form-control' %><br>
+      <%= f.label :image, "写真", class: "label font-weight-bold" %>
+      <%= f.attachment_field :image, class: 'form-control col-8' %><br>
 
       <%= f.submit '投稿', class: "btn btn-success" %>    
     <% end %>
