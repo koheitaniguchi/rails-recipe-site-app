@@ -1,15 +1,31 @@
-<h1 class="text-center">レシピ一覧</h1>
-<div class="container">
-  <div class="row">
-    <% @recipes.each do |recipe| %>
-      <div class="pb-2 col-lg-4">
-        <div class="card">
-          <%= link_to recipe_path(recipe) do %>
-            <%= attachment_image_tag recipe, :image, class:"card-img-top img-fluid", alt:"..." %>
-          <% end %>
-            <%=link_to recipe.user.username, user_path(recipe.user), class:"btn btn-secondary" %>
+<div class="album py-5 bg-light">
+  <h1 class="font-italic text-center">レシピ一覧</h1><br>
+    <div class="container">
+    <div class="hom">
+      <div class="row">
+        <% @recipes.each do |recipe| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <%= link_to recipe_path(recipe) do %>
+              <div>
+                <%= attachment_image_tag recipe, :image, class:"bd-placeholder-img card-img-top", width:"100%", height:"225", title:recipe.title %>
+              </div>
+            <% end %>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="custom"><%= recipe.title %></p>
+                <div class="btn-group">
+                  <div class="sa">
+                  <%=link_to recipe.user.username, user_path(recipe.user), class:"text-success font-weight-bold" %>
+                  </div>
+                </div>
+              </div>
+              <time><%= recipe.updated_at.strftime("%Y-%m-%d") %></time>更新
+            </div>
+          </div>
         </div>
+        <% end %>
       </div>
-    <% end %>
-  </div>
+      </div>
+    </div>
 </div>

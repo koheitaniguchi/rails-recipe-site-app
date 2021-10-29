@@ -1,40 +1,84 @@
-<div class="container">
-  <h1>マイページ</h1>
+<br><h1 class="font-italic text-center">マイページ</h1>
 
 <div class="container">
-  <div class="col-12 col-md-6 col-lg-4">
-    <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", class:"card-img-top img-fluid", alt:"Responsive image" %>   
-      <div>
-        <p>ユーザー名前  ： <%= @user.username %></p> 
-      </div>           
-      <% if @user.id == current_user.id %>        
-        <p>メールアドレス：<%= @user.email %>          
-        <%= link_to "編集", edit_user_path(@user), class: "btn btn-secondary" %>          
-        <%= link_to "削除", user_path(@user), method: :delete, class: "btn btn-secondary", data: {confirm: "削除しますか？"} %></p>        
-      <% end %>    
-    <div>
-      <p>プロフィール       ： <%= @user.profile %></p>
-    </div>  
+  <br><div class="border-bottom border-dark"></div><br>
+</div>
+
+<!--<div class="container">
+  <div class="img-container">
+    <div class="col-lg-4">
+      <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", class:"card-img-top img-fluid rounded-circle", alt:"Responsive image" %>   
+    </div>
+      <div class="text-xl-left">
+        <p>User Name  ： <%= @user.username %></p> 
+        <p>E-Mail ： <%= @user.email %></p>  
+        <p>Profile ： <%= @user.profile %></p>
+      </div>       
+        <% if @user.id == current_user.id %>         
+          <%= link_to "編集", edit_user_path(@user), class: "btn btn-secondary mr-3" %>         
+          <%= link_to "削除", user_path(@user), method: :delete, class: "btn btn-secondary", data: {confirm: "削除しますか？"} %>      
+        <% end %> 
+    </div>
+</div>-->
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4">
+      <%= attachment_image_tag @user, :profile_image, fallback: "no-image.png", class:"card-img-top img-fluid rounded-circle", alt:"Responsive image" %>   
+    </div>
+    <div class="col-sm">
+      <div class="pro">
+        <p>ユーザー名：<%= @user.username %></p> 
+        <p>メールアドレス：<%= @user.email %></p>  
+        <p>プロフィール：<%= @user.profile %></p>
+      </div>
+    </div>
+    <div class="col-sm-3">
+      <div class="rsa">
+        <% if @user.id == current_user.id %>         
+          <%= link_to "編集", edit_user_path(@user), class: "btn btn-secondary mr-3" %> 
+          <%= link_to "削除", user_path(@user), method: :delete, class: "btn btn-secondary", data: {confirm: "削除しますか？"} %>      
+        <% end %> 
+      </div>
+    </div>
   </div>
 </div>
-<div class="row">
-  <% @user.recipes.each do |recipe| %> 
-    <div class="col-12 col-md-6 col-lg-4">
-      <div class="card">
-        <%= link_to recipe_path(recipe) do %>
-          <%= attachment_image_tag recipe, :image, class:"card-img-top img-fluid", alt:"..." %>
-        <% end %>  
-      </div>
-        <div class="card-body">
-          <%= link_to "レシピの詳細", recipe_path(recipe), class: "text-success" %> 
-            <% if @user.id == current_user.id %>
-              <%= link_to "レシピの編集", edit_recipe_path(recipe), class: "text-success" %>        
-              <%= link_to "レシピの削除", recipe_path(recipe), class: "text-success", method: :delete, data: {confirm: "削除しますか？"} %>         
-            <% end %> 
-        </div>
-    </div>
-  <% end %>  
+
+
+<div class="container">
+  <br><div class="border-bottom border-dark"></div>
 </div>
+
+
+<div class="album py-5 bg-light">
+    <div class="container">
+    <div class="hom">
+      <div class="row">
+        <% @user.recipes.each do |recipe| %>
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <%= link_to recipe_path(recipe) do %>
+              <%= attachment_image_tag recipe, :image, class:"bd-placeholder-img card-img-top", width:"100%", height:"225" %>
+            <% end %>
+            <div class="card-body bg-secondary">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <%= link_to "詳細", recipe_path(recipe), class: "text-light mr-3" %> 
+                  <% if @user.id == current_user.id %>
+                    <%= link_to "編集", edit_recipe_path(recipe), class: "text-light mr-3" %>        
+                    <%= link_to "削除", recipe_path(recipe), class: "text-light", method: :delete, data: {confirm: "削除しますか？"} %>         
+                  <% end %> 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+</div>
+</div>
+
 
 
 

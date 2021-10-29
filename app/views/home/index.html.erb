@@ -1,5 +1,6 @@
 <h1 class="font-italic text-center">Welcome Recipe Site</h1>
   <div class="main-image">
+    <div class="position-absolute h-100 w-100 m-100 d-flex justify-content-center">
     <i class="home">
       <% if user_signed_in? %>
         <a><%= link_to "マイページ", user_path(current_user), class:"btn btn-secondary btn-lg font-weight-bold" %></a>
@@ -9,5 +10,6 @@
         <a><%= link_to "新規登録", new_user_registration_path, class:"btn btn-secondary btn-lg font-weight-bold" %></a>
       <% end %>
     </i>
+    </div>
   </div>
 
